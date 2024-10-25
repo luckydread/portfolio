@@ -1,11 +1,45 @@
 "use client";
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import emailjs from '@emailjs/browser';
 
 export default function Form() {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
-  console.log(errors);
+
+  const sendEmail = (params) => {
+    
+
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_SERVICE_ID,
+        process.env.NEXT_PUBLIC_TEMPLATE_ID, 
+        params,
+        
+        {
+        publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY,
+        limitRate:{
+            throttle: 5000,
+        }
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  };
+  const onSubmit = data => {
+    const templateParams = {
+      from_name: data.name,
+      to_name: 'mohamed',
+      reply_to: data.email,
+      message: data.message,
+    };
+    sendEmail(templateParams);
+  }
+
   
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='max-w-md w-full flex flex-col items-center justify-center space-y-4'>
