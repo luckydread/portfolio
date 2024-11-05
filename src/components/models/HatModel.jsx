@@ -14,22 +14,22 @@ const HatModel = React.memo(function HatModel(props) {
   });
   return (
     <group
-      {...props}
-      dispose={null}
-      ref={modelRef}
-      scale={[1.8, 1.8, 1.8]}
-      rotation={[0.4, -1, 0]}
-      position={[0, 0, 0]}
-    >
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_2.geometry}
-        material={materials.initialShadingGroup}
-        position={[0, -3.867, 0]}
-        rotation={[-Math.PI / 2, 0, 0]}
-      />
-    </group>
+    {...props}
+    dispose={null}
+    ref={modelRef}
+    scale={[1.8, 1.8, 1.8]}
+    rotation={[0.4, -1, 0]}
+    position={[0, 0, 0]}
+  >
+    <mesh
+      castShadow
+      receiveShadow
+      geometry={nodes.Object_2.geometry}
+      material={materials.initialShadingGroup}
+      position={[0, -3.867, 0]}
+      rotation={[-Math.PI / 2, 0, 0]}
+    />
+  </group>
   );
 });
 
