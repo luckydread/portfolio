@@ -1,5 +1,7 @@
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react'
+
 
 interface ProjectProps {
   name: string;
@@ -8,9 +10,19 @@ interface ProjectProps {
   demoLink: string;
 }
 
+const item ={
+  hidden:{opacity:0, y:100},
+  show:{opacity:1,y:0}
+}
+
+const NavLink = motion(Link);
+
+
 const ProjectLayout: React.FC<ProjectProps> = ({ name, description, date, demoLink }) => {
   return (
-    <Link href={demoLink} 
+    <NavLink href={demoLink} 
+    variants={item}
+              
     target='_blank'
     className='text-sm md:text-base flex  items-center justify-between w-full relative rounded-lg overflow-hidden p-4 md:p-6 custom-bg'>
     
@@ -25,7 +37,7 @@ const ProjectLayout: React.FC<ProjectProps> = ({ name, description, date, demoLi
 
         
 
-    </Link>
+    </NavLink>
   )
 }
 

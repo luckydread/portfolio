@@ -1,14 +1,6 @@
-import clsx from 'clsx'
-import { col } from 'framer-motion/client'
 import React from 'react'
+import ItemLayout from './itemLayout'
 
-const ItemLayout = ({ children, className }) => {
-  return <div className={clsx('custom-bg p-6 sm:p-8 rounded-xl flex items-center justify-center space-y-8',className)}>
-
-    {children}
-  </div>
-  
-}
 
 function AboutDetails() {
   return (
