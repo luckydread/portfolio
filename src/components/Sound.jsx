@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Volume2,VolumeX } from 'lucide-react';
-import React,{useEffect, useState} from 'react';
+import React,{useEffect, useState, useCallback} from 'react';
 import { createPortal } from 'react-dom';
 
 const Modal = ({onClose, toggle}) => {
@@ -31,7 +31,7 @@ const Sound = () => {
 const [isPlaying,setIsPlaying] = useState(false);
 const [showModal,setshowModal] = useState(false);
 
-const handleFirstUserInteraction = () => {
+const handleFirstUserInteraction =  useCallback(() => {
 
     const musicConsent = localStorage.getItem('musicConsent');
     if(musicConsent === "true" && !isPlaying){
@@ -42,37 +42,35 @@ const handleFirstUserInteraction = () => {
     ["click","keydown","touchstart"].forEach((event) =>
         document.removeEventListener(event,handleFirstUserInteraction)
     ); 
-}
+},[isPlaying]);
 
 useEffect(() => {
     const consent = localStorage.getItem('musicConsent');
     const consentTime = localStorage.getItem('consentTime');
 
-    if(consent && consentTime && new Date(consentTime).getTime() + 1000 * 60 * 60 * 24 * 3 > new Date()){
+    if (consent && consentTime && new Date(consentTime).getTime() + 1000 * 60 * 60 * 24 * 3 > new Date()) {
         setIsPlaying(consent === "true");
 
-        if(consent === "true"){
-            ["click","touchstart","keydown"].forEach((event) =>
-                document.addEventListener(event,handleFirstUserInteraction)
-        );    
-            
-        }else{
+        if (consent === "true") {
+            ["click", "touchstart", "keydown"].forEach((event) => {
+                document.addEventListener(event, handleFirstUserInteraction);
+            }); // Close the forEach loop properly
+        } else {
             setshowModal(true);
         }
     }
-},[]);
+}, [handleFirstUserInteraction]); // Ensure useEffect is properly closed
 
 const toggleSound = () => {
     const newState = !isPlaying;
-    setIsPlaying(!isPlaying);
-    newState ? audioRef.current.play() :  audioRef.current.pause();
-    localStorage.setItem('musicConsent',String(newState));
-    localStorage.setItem('consentTime',new Date().toISOString());
+    setIsPlaying(newState);
+    /* eslint-disable */
+    newState ? audioRef.current.play() : audioRef.current.pause();
+  /* eslint-enable */
+    localStorage.setItem('musicConsent', String(newState));
+    localStorage.setItem('consentTime', new Date().toISOString());
     setshowModal(false);
-
-
-}
-
+};
   return (
     <div className='fixed top-4 right-2.5  xs:right-4 z-50 group'>
 

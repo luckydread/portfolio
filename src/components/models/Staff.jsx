@@ -8,7 +8,7 @@ export default function Staff(props) {
 
   const modelRef = useRef()
 
-  useFrame((state, delta, xrFrame) => {
+  useFrame(() => {
     // This function runs at the native refresh rate inside of a shared render-loop
     modelRef.current.rotation.y += 0.007;
   })

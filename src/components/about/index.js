@@ -1,7 +1,8 @@
 import React from 'react'
+//import Image from 'next/image'
 import ItemLayout from './itemLayout'
 
-
+/*eslint-disable */
 function AboutDetails() {
   return (
     <section className='py-20 w-full'>
@@ -13,7 +14,7 @@ function AboutDetails() {
             <div className='font-light text-left text-xs sm:text md:text-base'>
             <p > 
             My journey in web development is powered by an array of mystical tools and languages, with JavaScript 
-            casting the core of my enchantments. I wield frameworks like React.js and Next.js with
+            casting the core of my enchantments. I wield frameworks like Next.js with
             precision, crafting 
             seamless portals (websites) that connect realms
             (users) across the digital universe. The ancient arts of the
@@ -28,7 +29,7 @@ function AboutDetails() {
             
         <ItemLayout className={'col-span-full xs:col-span-6 lg:col-span-4 text-accent'}>
              <p className='font-semibold w-full text-left text-2xl sm:text-5xl'>
-               25+ <sub className='font-semibold text-base'>clients</sub> 
+               5+ <sub className='font-semibold text-base'>clients</sub> 
             </p>
         </ItemLayout>
         <ItemLayout className={'col-span-full xs:col-span-6 lg:col-span-4 text-accent '}>
@@ -37,6 +38,7 @@ function AboutDetails() {
             </p>
         </ItemLayout>
         <ItemLayout className={'col-span-full sm:col-6 md:span-4 !p-0'}>
+            
             <img className='w-full h-auto'  src="https://github-readme-stats.vercel.app/api/top-langs/?username=luckydread&theme=transparent&hide_border=true&title_color=FEFE5B&text_color=FFFFFF&icon_color=FEFE5B&text_bold=false" alt="luckydread" loading='lazy'/>
         </ItemLayout>
         <ItemLayout className={'col-span-full md:col-span-8 !p-0'}>

@@ -1,10 +1,10 @@
 export const projectsData = [
     {
       id: 1,
-      name: "EcoTracker",
-      description: "Track your carbon footprint",
-      date: "2022-08-15",
-      demoLink: "https://ecotracker.example.com",
+      name: "Grafty",
+      description: "Connecting top talent with leading companies",
+      date: "2024-10-05",
+      demoLink: "https://v0-match-me-0kioi0hbxei.vercel.app",
     },
     {
       id: 2,

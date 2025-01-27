@@ -49,6 +49,7 @@ export default function Form() {
         },
         (error) => {
           toast.error('There was an error when you message was being sent, please try again.', {id: toastId});
+          console.log(error.text);
         },
       ); 
   };

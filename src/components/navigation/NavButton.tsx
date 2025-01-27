@@ -1,5 +1,4 @@
-import { b } from 'framer-motion/client';
-import { Github, Home, Linkedin, NotebookText, Palette, Phone, Scale, User} from 'lucide-react';
+import { Github, Home, Linkedin, NotebookText, Palette, Phone,User} from 'lucide-react';
 import Link from 'next/link';
 import React from 'react'
 import ResponsiveComponent from '../ResponsiveComponent';
